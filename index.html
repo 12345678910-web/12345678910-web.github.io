@@ -9,71 +9,78 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: #f4f7f9;
-    color: #333;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #0a2540, #020617);
+    color: white;
 }
 
 /* NAVBAR */
 nav {
     position: sticky;
     top: 0;
-    background: #0a2540;
-    color: white;
+    backdrop-filter: blur(10px);
+    background: rgba(10,37,64,0.7);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
-    z-index: 1000;
 }
 
 nav a {
     color: white;
     margin-left: 1rem;
     text-decoration: none;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #38bdf8;
 }
 
 /* HERO */
 .hero {
-    background: linear-gradient(135deg, #0a2540, #1a4f8b);
-    color: white;
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    background: linear-gradient(to right, #38bdf8, #a78bfa);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .hero button {
     margin-top: 1.5rem;
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 2rem;
     border: none;
-    background: #38bdf8;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
     color: white;
-    font-size: 1rem;
-    border-radius: 5px;
     cursor: pointer;
+    box-shadow: 0 0 15px rgba(56,189,248,0.7);
+    transition: 0.3s;
 }
 
-/* SECTIONS */
+.hero button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(56,189,248,1);
+}
+
+/* CONTAINER */
 .container {
     max-width: 1000px;
-    margin: 2rem auto;
-    padding: 1rem;
+    margin: auto;
+    padding: 2rem;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-}
-
+/* CARDS */
 .card {
-    background: white;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
     padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
     transition: 0.3s;
 }
 
@@ -81,17 +88,19 @@ nav a {
     transform: translateY(-5px);
 }
 
-h2 {
-    margin-bottom: 0.5rem;
-    color: #1a4f8b;
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
 }
 
-/* SCENARIO ANIMATION */
+/* SCENARIO */
 .scenario {
-    border-left: 5px solid #1a4f8b;
+    border-left: 4px solid #38bdf8;
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.8s ease;
+    transition: 0.8s;
 }
 
 .scenario.show {
@@ -100,29 +109,27 @@ h2 {
 }
 
 /* FORM */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+input, button {
+    padding: 0.8rem;
+    border-radius: 6px;
+    border: none;
 }
 
-input, button {
-    padding: 0.7rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+input {
+    background: rgba(255,255,255,0.1);
+    color: white;
 }
 
 button.submit {
-    background: #1a4f8b;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
     color: white;
-    border: none;
+    box-shadow: 0 0 10px #38bdf8;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
     padding: 2rem;
-    font-size: 0.8rem;
     color: gray;
 }
 </style>
@@ -141,7 +148,7 @@ footer {
 
 <section class="hero">
     <h1>Protect Privacy in the Age of AI</h1>
-    <p>The AI Physical Safety & Home Privacy Act ensures technology works for you—not against you.</p>
+    <p>Technology should serve you—not watch you.</p>
     <button onclick="scrollToForm()">Support the Act</button>
 </section>
 
@@ -149,60 +156,37 @@ footer {
 
 <section id="about" class="card">
     <h2>The Problem</h2>
-    <p>Home robots are getting smarter—but also more invasive. Without regulation, sensitive data from your home can be collected, stored, or misused with little accountability.</p>
+    <p>Smart home robots can collect and misuse private data without clear limits or accountability.</p>
 </section>
 
 <section id="rules">
     <h2>Main Protections</h2>
     <div class="grid">
-        <div class="card">
-            <h3>🔒 Data Stays Local</h3>
-            <p>Your private home data cannot leave your device without permission.</p>
-        </div>
-        <div class="card">
-            <h3>⛔ Kill Switch</h3>
-            <p>Every robot must include a physical emergency shutdown.</p>
-        </div>
-        <div class="card">
-            <h3>⚖️ Accountability</h3>
-            <p>Companies are responsible for damages caused by AI mistakes.</p>
-        </div>
+        <div class="card">🔒 Data stays on device</div>
+        <div class="card">⛔ Emergency kill switch</div>
+        <div class="card">⚖️ Company accountability</div>
     </div>
 </section>
 
 <section class="card">
     <h2>Why It Matters</h2>
-    <p>You shouldn’t trade your privacy for convenience. This law protects families, the elderly, and everyday users from hidden risks in AI-powered homes.</p>
+    <p>Your privacy should never be the price of convenience.</p>
 </section>
 
-<!-- NEW SCENARIO SECTION -->
 <section class="card scenario">
     <h2>Real-Life Scenario</h2>
-
     <p><strong>What could go wrong?</strong></p>
-    <p>
-        Imagine a home robot cleaning your room while quietly recording conversations.
-        Without you knowing, that data gets uploaded and stored—exposing private moments
-        that were never meant to leave your home.
-    </p>
-
-    <br>
-
-    <p><strong>How the PSHP Act protects you:</strong></p>
+    <p>A home robot records private conversations and uploads them without your knowledge.</p>
+    <p><strong>How the law helps:</strong></p>
     <ul>
-        <li>🔒 Your data stays on the device unless you allow it</li>
-        <li>⛔ You can instantly shut the robot off</li>
-        <li>⚖️ Companies are held responsible for mistakes</li>
+        <li>🔒 Data stays local</li>
+        <li>⛔ Instant shutdown</li>
+        <li>⚖️ Companies are responsible</li>
     </ul>
-
-    <p style="margin-top:10px;">
-        This law turns dangerous situations into preventable ones—keeping your life private.
-    </p>
 </section>
 
 <section id="support" class="card">
     <h2>Support the Act</h2>
-    <p>Join the movement for safer AI.</p>
     <form onsubmit="handleSubmit(event)">
         <input type="text" placeholder="Your Name" required>
         <input type="email" placeholder="Your Email" required>
@@ -224,17 +208,12 @@ function scrollToForm() {
 
 function handleSubmit(e) {
     e.preventDefault();
-    document.getElementById("message").innerText = "Thank you for supporting!";
+    document.getElementById("message").innerText = "Thanks for supporting!";
 }
 
-// SCROLL ANIMATION
 const scenario = document.querySelector('.scenario');
-
 window.addEventListener('scroll', () => {
-    const position = scenario.getBoundingClientRect().top;
-    const screenHeight = window.innerHeight;
-
-    if (position < screenHeight - 100) {
+    if (scenario.getBoundingClientRect().top < window.innerHeight - 100) {
         scenario.classList.add('show');
     }
 });
