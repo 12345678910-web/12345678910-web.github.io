@@ -86,6 +86,19 @@ h2 {
     color: #1a4f8b;
 }
 
+/* SCENARIO ANIMATION */
+.scenario {
+    border-left: 5px solid #1a4f8b;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.scenario.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* FORM */
 form {
     display: flex;
@@ -162,6 +175,31 @@ footer {
     <p>You shouldn’t trade your privacy for convenience. This law protects families, the elderly, and everyday users from hidden risks in AI-powered homes.</p>
 </section>
 
+<!-- NEW SCENARIO SECTION -->
+<section class="card scenario">
+    <h2>Real-Life Scenario</h2>
+
+    <p><strong>What could go wrong?</strong></p>
+    <p>
+        Imagine a home robot cleaning your room while quietly recording conversations.
+        Without you knowing, that data gets uploaded and stored—exposing private moments
+        that were never meant to leave your home.
+    </p>
+
+    <br>
+
+    <p><strong>How the PSHP Act protects you:</strong></p>
+    <ul>
+        <li>🔒 Your data stays on the device unless you allow it</li>
+        <li>⛔ You can instantly shut the robot off</li>
+        <li>⚖️ Companies are held responsible for mistakes</li>
+    </ul>
+
+    <p style="margin-top:10px;">
+        This law turns dangerous situations into preventable ones—keeping your life private.
+    </p>
+</section>
+
 <section id="support" class="card">
     <h2>Support the Act</h2>
     <p>Join the movement for safer AI.</p>
@@ -183,3 +221,24 @@ footer {
 function scrollToForm() {
     document.getElementById("support").scrollIntoView({ behavior: "smooth" });
 }
+
+function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById("message").innerText = "Thank you for supporting!";
+}
+
+// SCROLL ANIMATION
+const scenario = document.querySelector('.scenario');
+
+window.addEventListener('scroll', () => {
+    const position = scenario.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if (position < screenHeight - 100) {
+        scenario.classList.add('show');
+    }
+});
+</script>
+
+</body>
+</html>
